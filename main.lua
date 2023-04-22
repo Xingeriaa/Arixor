@@ -5,7 +5,7 @@ local Wm = library:Watermark("Arixor | v" .. "1.0.0" .. " | " .. library:GetUser
 local FpsWm = Wm:AddWatermark("fps: " .. library.fps)
 local Notif = library:InitNotifications()
 coroutine.wrap(function()
-    while wait(.75) do
+    while wait(.75) do 
         FpsWm:Text("fps: " .. library.fps)
     end
 end)()
@@ -16,7 +16,7 @@ local char = player.Character or player.CharacterAdded:Wait()
 local hrp = char:WaitForChild("HumanoidRootPart")
 local Humanoid = char:WaitForChild("Humanoid");
 local Camera = workspace.Camera;
-
+local Lighting = game:GetService("Lighting");
 player.CharacterAdded:Connect(function(character) 
     char = character
     hrp = character:WaitForChild("HumanoidRootPart")
@@ -369,9 +369,109 @@ local BuyMysteriousCameraButton = Shop:NewButton("Buy Mysterious Camera", functi
 end)
 
 local Visual = Init:NewTab("Visual")
+    
+local ColorList = {
+    BarrelColor = Color3.new(0.5411764705882353, 0.3254901960784314, 0),
+    BoxColor = Color3.new(0.9803921568627451, 0.9058823529411765, 0.4745098039215686),
+    ChestColor = Color3.new(1, 0.6823529411764706, 0),
+    EggColor = Color3.new(0.7607843137254902, 0.3764705882352941, 0.9803921568627451),   
+}
+
+local function ESP(Object, Color) 
+    local BillboardGui = Instance.new("BillboardGui", Object);
+    BillboardGui.Size = UDim2.new(0, 100,0, 25);
+    BillboardGui.Active = true;
+    BillboardGui.AlwaysOnTop = true;
+    BillboardGui.LightInfluence = 1;
+    BillboardGui.StudsOffsetWorldSpace = Vector3.new(0,2.8,0)
+
+    local Text = Instance.new("TextLabel", BillboardGui);
+    Text.BackgroundTransparency = 1;
+    Text.Size = UDim2.new(0, 100,0, 25);
+    Text.Text = "";
+    Text.TextColor3 = Color;
+    Text.TextScaled = true;
+    Text.TextSize = 11;
+
+    local Outline = Instance.new("UIStroke", Text);
+    Outline.Thickness = 0.3;
+end
+
+local ItemsESP = Visual:NewToggle("Master Switch (Items ESP)", false, function(value) 
+    _G.ItemESPToggler = value;
+    if _G.ItemESPToggler then 
+        for i,v in pairs(game:GetService("Workspace").Item:GetChildren()) do 
+            if v ~= nil and v.Position.Y > -40 then 
+                if v.Name == "Chest" then
+                    ESP(v, ColorList.ChestColor);
+                elseif v.Name == "Box" then
+                    ESP(v, ColorList.BoxColor);
+                elseif v.Name == "Barrel" then
+                    ESP(v, ColorList.BarrelColor);
+                else 
+                    ESP(v, Color3.new(1, 1, 1));
+                end
+            end
+        end
+    else
+        for i,v in pairs(game:GetService("Workspace").Item:GetChildren()) do 
+            if v ~= nil and v:FindFirstChildWhichIsA("BillboardGui") then 
+                v:FindFirstChildWhichIsA("BillboardGui"):Destroy();
+            end
+        end
+    end
+end)
+
+game:GetService("Workspace").Item.ChildAdded:Connect(function(Item)
+    if _G.ItemESPToggler and Item ~= nil and Item.Position.Y > -40 then 
+        if Item.Name == "Chest" then
+            ESP(Item, ColorList.ChestColor);
+        elseif Item.Name == "Box" then
+            ESP(Item, ColorList.BoxColor);
+        elseif Item.Name == "Barrel" then
+            ESP(Item, ColorList.BarrelColor);
+        else 
+            ESP(v, Color3.new(1, 1, 1));
+        end
+    end
+end)
+
+local VisualSection1 = Visual:NewSection("Item ESP's config");
+
+
+
+local ItemNameESPToggler = Visual:NewToggle("Item's name", false, function(value)
+    _G.ItemNameESP = value;
+end)
+
+local ItemDistanceESPToggler = Visual:NewToggle("Item's distance", false, function(value)
+    _G.ItemDistanceESP = value;
+end)
+
+game:GetService("RunService").Stepped:Connect(function()
+    for i, v in pairs(game:GetService("Workspace").Item:GetChildren()) do 
+        if _G.ItemESPToggler and v:IsA("Part") and v ~= nil and v.Position.Y > -40 and v:FindFirstChildWhichIsA("BillboardGui") then
+            hrp = char:WaitForChild("HumanoidRootPart");
+            local Distance = math.round((hrp.Position-v.Position).magnitude);
+            if _G.ItemDistanceESP and _G.ItemNameESP then
+                v:FindFirstChildWhichIsA("BillboardGui").TextLabel.Text = v.Name.."\n"..Distance.."m Away";
+                wait(.2)
+            elseif _G.ItemNameESP then
+                v:FindFirstChildWhichIsA("BillboardGui").TextLabel.Text = v.Name;
+                wait(.2)
+            elseif _G.ItemDistanceESP then
+                v:FindFirstChildWhichIsA("BillboardGui").TextLabel.Text = Distance.."m Away";
+                wait(.2)
+            end
+        end
+    end
+end)
+
+local VisualSection2 = Visual:NewSection("Misc");
+
 
 local ShowCashToggler = Visual:NewToggle("Show Cash", false, function(value) 
-        player.PlayerGui.Menu.Currencies.Visible = value
+    player.PlayerGui.Menu.Currencies.Visible = value
 end)
 
 local CameraFixedToggle = Visual:NewToggle("Fix the camera", false, function(value)
@@ -385,18 +485,10 @@ local CameraFixedToggle = Visual:NewToggle("Fix the camera", false, function(val
     end
 end)
 
-local SCRBlurDisabler = Visual:NewButton("Silver Chariot Requieum's blur disabler ", function(value)
-    for i,v in pairs(getreg()) do 
-        if type(v) == 'function' and islclosure(v) and not is_synapse_function(v) then 
-            local Consts = getconstants(v);
-            if table.find(Consts, "Blur") and table.find(Consts, "Size") then
-                getreg()[i] = function() 
-                    return nil
-                end
-            end
-        end
+local AntiBlurButton = Visual:NewButton("Anti Blur", function()
+    if Lighting:FindFirstChild("Blur") then 
+        Lighting:FindFirstChild("Blur"):Destroy();
     end
-    
 end)
 
 NextFrame:Connect(function()

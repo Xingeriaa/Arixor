@@ -58,7 +58,27 @@ end)
 local itemsellingtoggle = items:NewToggle("Auto Sell Items", false, function(value)
    _G.autosellitemstoggler = value
 end)
-    
+
+local InstantCollectItems = items:NewButton("Instant Collect Items (Use at your risk)", function()
+    for i, v in pairs(game:GetService("Workspace").Item:GetChildren()) do 
+        if v and v:IsA("Part") and v:FindFirstChild("ProximityPrompt") and v.Position.Y > -50 then 
+            hrp.CFrame = v.CFrame * CFrame.new(0,5,7);
+            task.wait(.2);
+            fireproximityprompt(v:FindFirstChild("ProximityPrompt"), math.round((hrp.Position-v.Position).magnitude));
+            task.wait(.2);
+        end
+    end
+end)
+
+local InstantSellAllItems = items:NewButton("Instant Sell All Items", function()
+    for i, v in pairs(player    .Backpack:GetChildren()) do 
+        if v and v:IsA("Tool") then
+            sell(v.Name);
+            task.wait();
+        end
+    end
+end)
+
 local itemslabel2 = items:NewSection("Config")
 
 local itemscmt1 = items:NewLabel("Auto Sell Items Config", "center")

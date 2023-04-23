@@ -11,12 +11,14 @@ coroutine.wrap(function()
 end)()
 library.title = "Arixor"
 
+
 local player = game.Players.LocalPlayer
 local char = player.Character or player.CharacterAdded:Wait() 
 local hrp = char:WaitForChild("HumanoidRootPart")
 local Humanoid = char:WaitForChild("Humanoid");
 local Camera = workspace.Camera;
 local Lighting = game:GetService("Lighting");
+local UIS = game:GetService("UserInputService");
 player.CharacterAdded:Connect(function(character) 
     char = character
     hrp = character:WaitForChild("HumanoidRootPart")
@@ -326,6 +328,70 @@ local library = teleport:NewButton("Library", function()
     hrp.CFrame = CFrame.new(-25.8522663, -31.0669003, 1521.94727, 0.998029947, -7.08256831e-09, 0.0627393797, 1.06147251e-08, 1, -5.59655682e-08, -0.0627393797, 5.6521273e-08, 0.998029947)
 end)
 
+local function TalkToNpc(NPC)  
+    for i,v in pairs(game:GetService("Workspace").Map.NPCs:GetChildren()) do 
+        if v and v:FindFirstChild("ClickDetector") and string.find(v.Name, NPC) then
+            fireclickdetector(v:FindFirstChild("ClickDetector"));
+        end
+    end
+end
+
+
+local NPC = Init:NewTab("NPC");
+
+local Asakura = NPC:NewButton("Talk to Asakura", function()
+    TalkToNpc("Asakura");
+end)
+
+local Hikarishi = NPC:NewButton("Talk to Hikarishi", function()
+    TalkToNpc("Hikarishi");
+end)
+
+local Luna = NPC:NewButton("Talk to Luna", function()
+    TalkToNpc("Luna");
+end)
+
+local Syrentia = NPC:NewButton("Talk to Syrentia", function()
+    TalkToNpc("Syrentia");
+end)
+
+local Simplrr = NPC:NewButton("Talk to Simplrr", function()
+    TalkToNpc("Simplrr");
+end)
+
+local XZ_LF = NPC:NewButton("Talk to XZ_LF", function()
+    TalkToNpc("XZ_LF");
+end)
+
+local TrueSwordsMan = NPC:NewButton("Talk to TrueSwordsMan", function()
+    TalkToNpc("TrueSwordsMan");
+end)
+
+local Blacko Coffee = NPC:NewButton("Talk to Blacko Coffee", function()
+    TalkToNpc("Blacko Coffee");
+end)
+
+local Auddy = NPC:NewButton("Talk to Auddy", function()
+    TalkToNpc("Auddy");
+end)
+
+local Gojo = NPC:NewButton("Talk to Gojo", function()
+    TalkToNpc("Gojo");
+end)
+
+local Drago = NPC:NewButton("Talk to Drago", function()
+    TalkToNpc("Drago");
+end)
+
+local Faith = NPC:NewButton("Talk to Faith", function()
+    TalkToNpc("Faith");
+end)
+
+local AllMight = NPC:NewButton("Talk to AllMight", function()
+    TalkToNpc("AllMight");
+end)
+
+
 local Shop = Init:NewTab("Shop")
 local ShopSection1 = Shop:NewSection("Skin Roller")
 
@@ -501,5 +567,14 @@ NextFrame:Connect(function()
         Camera.CameraSubject = Humanoid; 
     end
 end)
+
+local Setting = Init:NewTab("Setting")
+
+local ArixorKeybind = Setting:NewKeybind("Arixor Keybind", Enum.KeyCode.RightAlt, function(Key)
+    if Key then 
+        Init:UpdateKeybind(Enum.KeyCode[Key]);
+    end
+end)
+
 
 local FinishedLoading = Notif:Notify("Loaded Arixor v1.0.0", 4, "success")

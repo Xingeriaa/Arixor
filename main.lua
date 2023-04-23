@@ -463,7 +463,7 @@ local function ESP(Object, Color)
     Outline.Thickness = 0.3;
 end
 
-local ItemsESP = Visual:NewToggle("Master Switch (Items ESP)", false, function(value) 
+local ESPMasterSwitch = Visual:NewToggle("ESP Master Switch", false, function(value) 
     _G.ItemESPToggler = value;
     if _G.ItemESPToggler then 
         for i,v in pairs(game:GetService("Workspace").Item:GetChildren()) do 

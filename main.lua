@@ -25,7 +25,19 @@ player.CharacterAdded:Connect(function(character)
     Humanoid = character:WaitForChild("Humanoid")
 end)
 
+local Player = game.Players.LocalPlayer;
+local Char = Player.Character or Player.CharacterAdded:Wait(); 
+local HRP = Char:WaitForChild("HumanoidRootPart");
 
+local function ResetCharacter()
+    local BeforeDieCFrame = HRP.CFrame;
+    HRP:Remove();
+    task.wait(.3);
+    Char = Player.Character or Player.CharacterAdded:Wait(); 
+    HRP = Char:WaitForChild("HumanoidRootPart");
+    task.wait()
+    HRP.CFrame = BeforeDieCFrame;
+end
 
 function sell(item) 
     game:GetService("ReplicatedStorage").GlobalUsedRemotes.SellItem:FireServer(item)
@@ -355,6 +367,12 @@ local function TalkToNpc(NPC)
         end
     end
 end
+
+local Character = Init:NewTab("Character");
+
+local InstantReset = Character:NewButton("Instant Reset", function()
+    ResetCharacter();
+end)
 
 
 local NPC = Init:NewTab("NPC");

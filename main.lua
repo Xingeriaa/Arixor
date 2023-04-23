@@ -1,7 +1,7 @@
 local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Consistt/Ui/main/UnLeaked"))()
 
 library.rank = "Premium"
-local Wm = library:Watermark("NIGGA KILL YOURSELF | v" .. "1.0.0" .. " | " .. library:GetUsername() .. " | rank: " .. library.rank)
+local Wm = library:Watermark("Arixor | v" .. "1.0.0" .. " | " .. library:GetUsername() .. " | rank: " .. library.rank)
 local FpsWm = Wm:AddWatermark("fps: " .. library.fps)
 local Notif = library:InitNotifications()
 coroutine.wrap(function()
@@ -9,7 +9,7 @@ coroutine.wrap(function()
         FpsWm:Text("fps: " .. library.fps)
     end
 end)()
-library.title = "NIGGA KILL YOURSELF"
+library.title = "Arixor"
 
 
 local player = game.Players.LocalPlayer
@@ -54,7 +54,16 @@ function tpplr(plr)
     end
 end
 
-
+function TpBehindPlr(plr)
+    for i,v in pairs(game.Players:GetPlayers()) do 
+        if v ~= nil and v ~= player then 
+            local target = string.lower(v.Name)
+            if string.match(target, plr) then 
+                hrp.CFrame = v.Character:FindFirstChild("HumanoidRootPart").CFrame * CFrame.new(0,0,2)
+            end
+        end
+    end
+end
 
 
 wait(1)
@@ -378,15 +387,14 @@ end)
 
 local Troll = Init:NewTab("Troll");
 
-local FloatPlayer = Troll:NewTextbox("Float Player", "", "Player's name", "all", "medium", true, false, function(val)
-    if Player.Data.Stand.Value == 1 then 
+local FloatPlayer = Troll:NewTextbox("Float Player (Require Equipping Standless)", "", "Player's name", "all", "medium", true, false, function(val)
+    if val and Player.Data.Stand.Value == 1 then 
         ResetCharacter();
-        wait(.3)
-        tpplr(val);
-        game:GetService("ReplicatedStorage").StandlessRemote.Barrage:FireServer(false); task.wait()
-        game:GetService("ReplicatedStorage").StandlessRemote.Barrage:FireServer(false); task.wait()
-        game:GetService("ReplicatedStorage").StandlessRemote.Barrage:FireServer(false); task.wait()
-        game:GetService("ReplicatedStorage").StandlessRemote.Barrage:FireServer(false); task.wait()
+        wait(.75)
+        TpBehindPlr(val);
+        for i=0,10 do
+            game:GetService("ReplicatedStorage").StandlessRemote.Barrage:FireServer(false);
+        end
         task.wait(1.3);
         ResetCharacter();
     end

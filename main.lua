@@ -383,7 +383,10 @@ local FloatPlayer = Troll:NewTextbox("Float Player", "", "Player's name", "all",
         ResetCharacter();
         wait(.3)
         tpplr(val);
-        game:GetService("ReplicatedStorage").StandlessRemote.Barrage:FireServer(false);
+        game:GetService("ReplicatedStorage").StandlessRemote.Barrage:FireServer(false); task.wait()
+        game:GetService("ReplicatedStorage").StandlessRemote.Barrage:FireServer(false); task.wait()
+        game:GetService("ReplicatedStorage").StandlessRemote.Barrage:FireServer(false); task.wait()
+        game:GetService("ReplicatedStorage").StandlessRemote.Barrage:FireServer(false); task.wait()
         task.wait(1.3);
         ResetCharacter();
     end

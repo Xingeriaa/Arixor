@@ -32,15 +32,28 @@ local HRP = Char:WaitForChild("HumanoidRootPart");
 local function ResetCharacter()
     local BeforeDieCFrame = HRP.CFrame;
     HRP:Remove();
-    task.wait(.4);
+    task.wait(.75);
     Char = Player.Character or Player.CharacterAdded:Wait(); 
     HRP = Char:WaitForChild("HumanoidRootPart");
-    task.wait()
     HRP.CFrame = BeforeDieCFrame;
 end
 
 function sell(item) 
     game:GetService("ReplicatedStorage").GlobalUsedRemotes.SellItem:FireServer(item)
+end
+
+function PlayerNameCheck(PlrName) 
+    if PlrName then
+        for i,v in pairs(game.Players:GetPlayers()) do 
+            if v ~= nil and string.match(v.Name, PlrName) then 
+                return true;
+            else 
+                return false;
+            end
+        end
+        return false;
+    end
+    return false;
 end
 
 function tpplr(plr)
@@ -63,6 +76,265 @@ function TpBehindPlr(plr)
             end
         end
     end
+end
+
+
+local function Float(plr)
+    ResetCharacter()
+    task.wait(1)
+    local FloatCFrame = HRP.CFrame;
+    game:GetService("ReplicatedStorage").StandlessRemote.Barrage:FireServer(false);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001)
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001)
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    ResetCharacter();
+    task.wait(.2);
+    HRP.CFrame = FloatCFrame;
+end
+
+local function Bring(plr)
+    ResetCharacter()
+    task.wait(1)
+    local BringCFrame = HRP.CFrame;
+    game:GetService("ReplicatedStorage").StandlessRemote.Barrage:FireServer(false);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001)
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001)
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    TpBehindPlr(plr);
+    task.wait(.00001);
+    HRP.CFrame = BringCFrame;
 end
 
 
@@ -388,15 +660,15 @@ end)
 local Troll = Init:NewTab("Troll");
 
 local FloatPlayer = Troll:NewTextbox("Float Player (Require Equipping Standless)", "", "Player's name", "all", "medium", true, false, function(val)
-    if val and Player.Data.Stand.Value == 1 then 
-        ResetCharacter();
-        wait(.75)
-        TpBehindPlr(val);
-        for i=0,10 do
-            game:GetService("ReplicatedStorage").StandlessRemote.Barrage:FireServer(false);
-        end
-        task.wait(1.3);
-        ResetCharacter();
+    if PlayerNameCheck(val) ~= nil then 
+        Float(val);
+    end
+end)
+
+
+local BringPlayer = Troll:NewTextbox("Bring Player (Require Equipping Standless)", "", "Player's name", "all", "medium", true, false, function(val)
+    if PlayerNameCheck(val) ~= nil then 
+        Bring(val);
     end
 end)
 

@@ -1,7 +1,7 @@
 local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Consistt/Ui/main/UnLeaked"))()
 
 library.rank = "Premium"
-local Wm = library:Watermark("Arixor | v" .. "1.0.0" .. " | " .. library:GetUsername() .. " | rank: " .. library.rank)
+local Wm = library:Watermark("NIGGA KILL YOURSELF | v" .. "1.0.0" .. " | " .. library:GetUsername() .. " | rank: " .. library.rank)
 local FpsWm = Wm:AddWatermark("fps: " .. library.fps)
 local Notif = library:InitNotifications()
 coroutine.wrap(function()
@@ -9,7 +9,7 @@ coroutine.wrap(function()
         FpsWm:Text("fps: " .. library.fps)
     end
 end)()
-library.title = "Arixor"
+library.title = "NIGGA KILL YOURSELF"
 
 
 local player = game.Players.LocalPlayer
@@ -32,7 +32,7 @@ local HRP = Char:WaitForChild("HumanoidRootPart");
 local function ResetCharacter()
     local BeforeDieCFrame = HRP.CFrame;
     HRP:Remove();
-    task.wait(.3);
+    task.wait(.4);
     Char = Player.Character or Player.CharacterAdded:Wait(); 
     HRP = Char:WaitForChild("HumanoidRootPart");
     task.wait()
@@ -370,8 +370,23 @@ end
 
 local Character = Init:NewTab("Character");
 
-local InstantReset = Character:NewButton("Instant Reset", function()
-    ResetCharacter();
+local InstantReset = Character:NewKeybind("Instant Reset", Enum.KeyCode.Semicolon, function(key)
+    if key then 
+        ResetCharacter();
+    end
+end)
+
+local Troll = Init:NewTab("Troll");
+
+local FloatPlayer = Troll:NewTextbox("Float Player", "", "Player's name", "all", "medium", true, false, function(val)
+    if Player.Data.Stand.Value == 1 then 
+        ResetCharacter();
+        wait(.3)
+        tpplr(val);
+        game:GetService("ReplicatedStorage").StandlessRemote.Barrage:FireServer(false);
+        task.wait(1.3);
+        ResetCharacter();
+    end
 end)
 
 

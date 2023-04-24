@@ -1272,7 +1272,7 @@ local ESPMasterSwitch = Visual:NewToggle("ESP Master Switch", false, function(va
     _G.ItemESPToggler = value;
     if _G.ItemESPToggler then 
         for i,v in pairs(game:GetService("Workspace").Item:GetChildren()) do 
-            if v ~= nil and v.Position.Y > -40 then 
+            if _G.ItemESP == true and v ~= nil and v.Position.Y > -40 then 
                 if v.Name == "Chest" then
                     ESP(v, ColorList.ChestColor);
                 elseif v.Name == "Box" then
@@ -1307,7 +1307,7 @@ end)
 
 -- FOR ITEM
 game:GetService("Workspace").Item.ChildAdded:Connect(function(Item)
-    if _G.ItemESPToggler and Item ~= nil and Item.Position.Y > -40 then 
+    if _G.ItemESPToggler and _G.ItemESP == true and Item ~= nil and Item.Position.Y > -40 then 
         if Item.Name == "Chest" then
             ESP(Item, ColorList.ChestColor);
         elseif Item.Name == "Box" then
@@ -1329,7 +1329,11 @@ end)
 
 -- game:GetService("Workspace").Map.NPCs.Polnareff
 
-local VisualSection2 = Visual:NewSection("Rare NPC");
+local VisualSection2 = Visual:NewSection("ESP Filter");
+
+local ItemESP = Visual:NewToggle("Items ESP", false, function(value)
+    _G.ItemESP = value;
+end)
 
 local ItemDistanceESPToggler = Visual:NewToggle("All for one ESP", false, function(value)
     _G.AFOESP = value;
@@ -1349,7 +1353,7 @@ end)
 game:GetService("RunService").Stepped:Connect(function()
     -- for Items
     for i, v in pairs(game:GetService("Workspace").Item:GetChildren()) do 
-        if _G.ItemESPToggler and (v:IsA("Part") ) and v ~= nil and v.Position.Y > -40 and v:FindFirstChildWhichIsA("BillboardGui") then
+        if _G.ItemESPToggler and _G.ItemESP == true and v:IsA("Part")  and v ~= nil and v.Position.Y > -40 and v:FindFirstChildWhichIsA("BillboardGui") then
             hrp = char:WaitForChild("HumanoidRootPart");
             local Distance = math.round((hrp.Position-v.Position).magnitude);
             if _G.ItemDistanceESP and _G.ItemNameESP then
@@ -1362,11 +1366,13 @@ game:GetService("RunService").Stepped:Connect(function()
                 v:FindFirstChildWhichIsA("BillboardGui").TextLabel.Text = Distance.."m Away";
                 wait(.2)
             end
+        elseif _G.ItemESP == false then 
+            v:FindFirstChildWhichIsA("BillboardGui").TextLabel.Text = "";
         end
     end
     -- for NPCs
     for i, v in pairs(game:GetService("Workspace").Map.NPCs:GetChildren()) do 
-        if _G.ItemESPToggler and v:IsA("Model") and v ~= nil and v:FindFirstChildWhichIsA("BillboardGui") then
+        if _G.ItemESPToggler == true and _G.AFOESP == true and v:IsA("Model") and v ~= nil and v:FindFirstChildWhichIsA("BillboardGui") then
             hrp = char:WaitForChild("HumanoidRootPart");
             local Distance = math.round((hrp.Position-v:FindFirstChild("HumanoidRootPart").Position).magnitude);
             if _G.ItemDistanceESP and _G.ItemNameESP then
@@ -1379,7 +1385,8 @@ game:GetService("RunService").Stepped:Connect(function()
                 v:FindFirstChildWhichIsA("BillboardGui").TextLabel.Text = Distance.."m Away";
                 wait(.2)
             end
-
+        elseif _G.AFOESP == false then 
+            v:FindFirstChildWhichIsA("BillboardGui").TextLabel.Text = "";
         end
     end
 end)

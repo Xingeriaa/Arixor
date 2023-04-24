@@ -19,11 +19,17 @@ local Humanoid = char:WaitForChild("Humanoid");
 local Camera = workspace.Camera;
 local Lighting = game:GetService("Lighting");
 local UIS = game:GetService("UserInputService");
+local RunService = game:GetService("RunService");
+local CharHP;
 player.CharacterAdded:Connect(function(character) 
     char = character
     hrp = character:WaitForChild("HumanoidRootPart")
     Humanoid = character:WaitForChild("Humanoid")
 end)
+
+
+local AnubisREQDimension = game:GetService("Workspace").Map.AnubisRequiemDimension.InvertedSphere
+
 
 local Player = game.Players.LocalPlayer;
 local Char = Player.Character or Player.CharacterAdded:Wait(); 
@@ -56,6 +62,20 @@ function PlayerNameCheck(PlrName)
     return false;
 end
 
+local function PlayerDisplayNameCheck(PlrName) 
+    if PlrName then
+        for i,v in pairs(game.Players:GetPlayers()) do 
+            if v ~= nil and string.match(string.lower(v.DisplayName), string.lower(PlrName)) then 
+                return true;
+            else 
+                return false;
+            end
+        end
+        return false;
+    end
+    return false;
+end
+
 function tpplr(plr)
     for i,v in pairs(game.Players:GetPlayers()) do 
         if v ~= nil and v ~= player then 
@@ -67,12 +87,23 @@ function tpplr(plr)
     end
 end
 
+local function DisplayNameTP(plr)
+    for i,v in pairs(game.Players:GetPlayers()) do 
+        if v ~= nil and v ~= player then 
+            local target = string.lower(v.DisplayName)
+            if string.match(string.lower(target), string.lower(plr)) then 
+                hrp.CFrame = v.Character:FindFirstChild("HumanoidRootPart").CFrame
+            end
+        end
+    end
+end
+
 function TpBehindPlr(plr)
     for i,v in pairs(game.Players:GetPlayers()) do 
         if v ~= nil and v ~= player then 
             local target = string.lower(v.Name)
             if string.match(target, plr) then 
-                hrp.CFrame = v.Character:FindFirstChild("HumanoidRootPart").CFrame * CFrame.new(0,0,2)
+                hrp.CFrame = v.Character:FindFirstChild("HumanoidRootPart").CFrame * CFrame.new(0,0,-1)
             end
         end
     end
@@ -85,129 +116,222 @@ local function Float(plr)
     local FloatCFrame = HRP.CFrame;
     game:GetService("ReplicatedStorage").StandlessRemote.Barrage:FireServer(false);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001)
+    task.wait(.0000001)
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001)
+    task.wait(.0000001)
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001)
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001)
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
     ResetCharacter();
     task.wait(.2);
     HRP.CFrame = FloatCFrame;
 end
+
 
 local function Bring(plr)
     ResetCharacter()
@@ -215,128 +339,439 @@ local function Bring(plr)
     local BringCFrame = HRP.CFrame;
     game:GetService("ReplicatedStorage").StandlessRemote.Barrage:FireServer(false);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001)
+    task.wait(.0000001)
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001)
+    task.wait(.0000001)
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
     TpBehindPlr(plr);
-    task.wait(.00001);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001)
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001)
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
     HRP.CFrame = BringCFrame;
 end
 
+local function BringPlrToAnubisDimension(plr)
+    ResetCharacter()
+    task.wait(1)
+    local BringCFrame = HRP.CFrame;
+    game:GetService("ReplicatedStorage").StandlessRemote.Barrage:FireServer(false);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001)
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001)
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001)
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001)
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    TpBehindPlr(plr);
+    task.wait(.0000001);
+    HRP.CFrame = AnubisREQDimension.CFrame;
+end
 
 wait(1)
 local Init = library:Init()
@@ -594,7 +1029,11 @@ local teleport = Init:NewTab("Teleport")
 local tpsection1 = teleport:NewSection("Player Teleport")
 
 local plrtp = teleport:NewTextbox("Teleport to player", "", "Type player's name here", "all", "medium", true, false, function(val)
-    tpplr(tostring(val))
+    if PlayerNameCheck(val) ~= nil then
+        tpplr(tostring(val));
+    elseif PlayerDisplayNameCheck(val) ~= nil then
+        DisplayNameTP(tostring(val));
+    end
 end)
 
 
@@ -651,6 +1090,30 @@ end
 
 local Character = Init:NewTab("Character");
 
+local AutoResetToggler = Character:NewToggle("Auto Reset", false, function(value)
+    _G.AutoResetToggler = value;
+end)
+
+local CharacterSection1 = Character:NewSection("Auto Reset's config'");
+
+
+local AutoResetSlider = Character:NewSlider("Auto Reset Threshold (% of Health)", "", true, "/", {min = 1, max = 99, default = 20}, function(value)
+    _G.HealThreshold = (value / 100) * CharHP;
+end)
+
+RunService.Stepped:Connect(function()
+    Humanoid = char:FindFirstChild("Humanoid")
+    CharHP = char:FindFirstChild("Humanoid").Health
+    pcall(function()
+        if _G.AutoResetToggler == true and Humanoid.Health < _G.HealThreshold then 
+            ResetCharacter();
+        end
+    end)
+end)
+
+local CharacterSection2 = Character:NewSection("");
+
+
 local InstantReset = Character:NewKeybind("Instant Reset", Enum.KeyCode.Semicolon, function(key)
     if key then 
         ResetCharacter();
@@ -659,16 +1122,22 @@ end)
 
 local Troll = Init:NewTab("Troll");
 
-local FloatPlayer = Troll:NewTextbox("Float Player (Require Equipping Standless)", "", "Player's name", "all", "medium", true, false, function(val)
+local FloatPlayer = Troll:NewTextbox("Float Player (Require Standless)", "", "Player's name", "all", "medium", true, false, function(val)
     if PlayerNameCheck(val) ~= nil then 
         Float(val);
     end
 end)
 
 
-local BringPlayer = Troll:NewTextbox("Bring Player (Require Equipping Standless)", "", "Player's name", "all", "medium", true, false, function(val)
+local BringPlayer = Troll:NewTextbox("Bring Player (Require Standless)", "", "Player's name", "all", "medium", true, false, function(val)
     if PlayerNameCheck(val) ~= nil then 
         Bring(val);
+    end
+end)
+
+local BringPlrToAnubisDimension = Troll:NewTextbox("Bring Player To Anubis Dimension (RequireStandless)", "", "Player's name", "all", "medium", true, false, function(val)
+    if PlayerNameCheck(val) ~= nil then 
+        BringPlrToAnubisDimension(val);
     end
 end)
 
@@ -815,8 +1284,20 @@ local ESPMasterSwitch = Visual:NewToggle("ESP Master Switch", false, function(va
                 end
             end
         end
+        for i,v in pairs(game:GetService("Workspace").Map.NPCs:GetChildren()) do 
+            if v ~= nil and _G.AFOESP == true then 
+                if v.Name == "AFO" then 
+                    ESP(v, Color3.new(0.3607843137254902, 0.0196078431372549, 0.0196078431372549));
+                end
+            end
+        end
     else
         for i,v in pairs(game:GetService("Workspace").Item:GetChildren()) do 
+            if v ~= nil and v:FindFirstChildWhichIsA("BillboardGui") then 
+                v:FindFirstChildWhichIsA("BillboardGui"):Destroy();
+            end
+        end
+        for i,v in pairs(game:GetService("Workspace").Map.NPCs:GetChildren()) do 
             if v ~= nil and v:FindFirstChildWhichIsA("BillboardGui") then 
                 v:FindFirstChildWhichIsA("BillboardGui"):Destroy();
             end
@@ -824,6 +1305,7 @@ local ESPMasterSwitch = Visual:NewToggle("ESP Master Switch", false, function(va
     end
 end)
 
+-- FOR ITEM
 game:GetService("Workspace").Item.ChildAdded:Connect(function(Item)
     if _G.ItemESPToggler and Item ~= nil and Item.Position.Y > -40 then 
         if Item.Name == "Chest" then
@@ -838,21 +1320,36 @@ game:GetService("Workspace").Item.ChildAdded:Connect(function(Item)
     end
 end)
 
-local VisualSection1 = Visual:NewSection("Item ESP's config");
+-- For NPC
+game:GetService("Workspace").Map.NPCs.ChildAdded:Connect(function(Item)
+    if _G.ItemESPToggler == true and Item ~= nil and _G.AFOESP == true and Item.Name == "AFO" then 
+        ESP(v, Color3.new(0.3607843137254902, 0.0196078431372549, 0.0196078431372549));
+    end
+end)
 
+-- game:GetService("Workspace").Map.NPCs.Polnareff
 
+local VisualSection2 = Visual:NewSection("Rare NPC");
 
-local ItemNameESPToggler = Visual:NewToggle("Item's name", false, function(value)
+local ItemDistanceESPToggler = Visual:NewToggle("All for one ESP", false, function(value)
+    _G.AFOESP = value;
+end)
+
+local VisualSection1 = Visual:NewSection("ESP's config");
+
+local ItemNameESPToggler = Visual:NewToggle("ESP's name", false, function(value)
     _G.ItemNameESP = value;
 end)
 
-local ItemDistanceESPToggler = Visual:NewToggle("Item's distance", false, function(value)
+local ItemDistanceESPToggler = Visual:NewToggle("ESP's distance", false, function(value)
     _G.ItemDistanceESP = value;
 end)
 
+
 game:GetService("RunService").Stepped:Connect(function()
+    -- for Items
     for i, v in pairs(game:GetService("Workspace").Item:GetChildren()) do 
-        if _G.ItemESPToggler and v:IsA("Part") and v ~= nil and v.Position.Y > -40 and v:FindFirstChildWhichIsA("BillboardGui") then
+        if _G.ItemESPToggler and (v:IsA("Part") ) and v ~= nil and v.Position.Y > -40 and v:FindFirstChildWhichIsA("BillboardGui") then
             hrp = char:WaitForChild("HumanoidRootPart");
             local Distance = math.round((hrp.Position-v.Position).magnitude);
             if _G.ItemDistanceESP and _G.ItemNameESP then
@@ -867,10 +1364,28 @@ game:GetService("RunService").Stepped:Connect(function()
             end
         end
     end
+    -- for NPCs
+    for i, v in pairs(game:GetService("Workspace").Map.NPCs:GetChildren()) do 
+        if _G.ItemESPToggler and v:IsA("Model") and v ~= nil and v:FindFirstChildWhichIsA("BillboardGui") then
+            hrp = char:WaitForChild("HumanoidRootPart");
+            local Distance = math.round((hrp.Position-v:FindFirstChild("HumanoidRootPart").Position).magnitude);
+            if _G.ItemDistanceESP and _G.ItemNameESP then
+                v:FindFirstChildWhichIsA("BillboardGui").TextLabel.Text = v.Name.."\n"..Distance.."m Away";
+                wait(.2)
+            elseif _G.ItemNameESP then
+                v:FindFirstChildWhichIsA("BillboardGui").TextLabel.Text = v.Name;
+                wait(.2)
+            elseif _G.ItemDistanceESP then
+                v:FindFirstChildWhichIsA("BillboardGui").TextLabel.Text = Distance.."m Away";
+                wait(.2)
+            end
+
+        end
+    end
 end)
 
-local VisualSection2 = Visual:NewSection("Misc");
 
+local VisualSection3 = Visual:NewSection("");
 
 local ShowCashToggler = Visual:NewToggle("Show Cash", false, function(value) 
     player.PlayerGui.Menu.Currencies.Visible = value
@@ -904,9 +1419,9 @@ NextFrame:Connect(function()
     end
 end)
 
-local Setting = Init:NewTab("Setting")
+local MISC = Init:NewTab("Misc")
 
-local ArixorKeybind = Setting:NewKeybind("Arixor Keybind", Enum.KeyCode.RightAlt, function(Key)
+local ArixorKeybind = MISC:NewKeybind("Arixor Keybind", Enum.KeyCode.RightAlt, function(Key)
     if Key then 
         Init:UpdateKeybind(Enum.KeyCode[Key]);
     end

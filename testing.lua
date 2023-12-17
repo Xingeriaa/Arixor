@@ -5,18 +5,14 @@ local Character = LocalPlayer.Character;
 
 local PlantRange = 20;
 
--- _G.InToggle = false;
--- RunService.Stepped:Connect(function()
---     if _G.InToggle == false then
---         _G.InToggle = true;
-print("executed")
-        local HRP = Character:FindFirstChild("HumanoidRootPart");
-        if HRP == true then
-            print("1")
+_G.InToggle = false;
+RunService.Stepped:Connect(function()
+    if _G.InToggle == false then
+        _G.InToggle = true;
+        if Character:FindFirstChild("HumanoidRootPart") then
             for i,v in pairs(workspace.Deployables:GetChildren()) do
-                if v ~= nil and v.Name == "Plant Box" and v.Part ~= nil and math.round((HRP.Position - v.Part.Position).magnitude) <= PlantRange then 
-                    print("2")
-                    if v:FindFirstChild("Bloodfruit") ~= nil then 
+                if v ~= nil and v.Name == "Plant Box" and v.Part ~= nil then 
+                    if math.round((Character:FindFirstChild("HumanoidRootPart").Position - v.Part.Position).Magnitude) < 30 then 
                         local args = {
                             [1] = v,
                             [2] = "Bloodfruit"
@@ -25,9 +21,10 @@ print("executed")
                         print("Planted")
                     end
                 end
+                wait(1)
             end
         end
---         _G.InToggle = false;
---     end
--- end)
+        _G.InToggle = false;
+    end
+end)
 

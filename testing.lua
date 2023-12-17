@@ -9,6 +9,7 @@ local PlantRange = 20;
 -- RunService.Stepped:Connect(function()
 --     if _G.InToggle == false then
 --         _G.InToggle = true;
+print("Executed")
         local HRP = Character:FindFirstChild("HumanoidRootPart");
         if HRP == true then
             for i,v in pairs(workspace.Deployables:GetChildren()) do
@@ -18,9 +19,8 @@ local PlantRange = 20;
                             [1] = v,
                             [2] = "Bloodfruit"
                         }
-                        print("Planted")
                         game:GetService("ReplicatedStorage").Events.InteractStructure:FireServer(unpack(args))
-                        
+                         print("Planted")
                     end
                 end
             end

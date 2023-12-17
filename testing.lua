@@ -18,7 +18,7 @@ local PlantRange = 20;
                             [1] = v,
                             [2] = "Bloodfruit"
                         }
-                        
+                        print("Planted")
                         game:GetService("ReplicatedStorage").Events.InteractStructure:FireServer(unpack(args))
                         
                     end
